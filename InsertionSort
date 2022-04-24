@@ -1,0 +1,35 @@
+import java.util.*;
+import java.lang.Math;
+        
+public class InsertionSort {
+    public static void main(String[] args) {
+        ArrayList<Integer> data = new ArrayList();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Panjang Array : ");
+        int panjang = sc.nextInt();
+        for(int k = 0 ;k<panjang;k++){
+            System.out.print("Nilai Index ke "+k+" : ");
+            int nilai = sc.nextInt();
+            data.add(nilai);
+        }
+        int n = data.size();
+        int i = 1;
+        int j;
+        while(i<n){
+            int pam = data.get(i);
+            for(j = i;j>0;j--){
+                if(pam<data.get(j-1)){
+                    data.set(j,data.get(j-1));
+                }
+                else{
+                    break;
+                }
+            }
+            data.set(j, pam);
+            i++;
+        }
+        System.out.println(data);
+    }
+   
+    
+}
