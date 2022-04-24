@@ -1,0 +1,54 @@
+import java.util.*;
+
+
+public class RandomQuickSort {
+   
+    public static void main(String[] args) {
+        ArrayList<Integer> elemen = new ArrayList();
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Panjang Array : ");
+        int n = scan.nextInt();
+        for(int i = 0;i<n;i++){
+            System.out.print("Elemen ke "+i+" : ");
+            int nilai = scan.nextInt();
+            elemen.add(nilai);
+        }
+        System.out.println("Nilai inputan : "+elemen);
+        randomquicksort(elemen,0,elemen.size()-1);
+        System.out.print("Random QuickSort : ");
+        for(int i = 0;i<elemen.size();i++){
+            System.out.print(elemen.get(i)+" ");
+        }
+    }
+    public static void swap(ArrayList<Integer> elemen,int i,int j){
+        int temp = elemen.get(i);
+        elemen.set(i, elemen.get(j));
+        elemen.set(j, temp);
+    }
+    public static int partition(ArrayList<Integer> elemen,int beg,int end){
+        int random=beg + ((int)Math.random()*(elemen.size()))/(end-beg+1);
+        int last=end;
+        swap(elemen,random,end);
+        end--;
+        
+        while(beg<=end){
+            if(elemen.get(beg)<elemen.get(last)) beg++;
+            else {
+                swap(elemen,beg,end);
+                end--;
+            }
+        }
+        swap(elemen,beg,last);        
+        return beg;
+    }
+    public static void randomquicksort(ArrayList<Integer> elemen,int beg,int end){
+                if(beg >=end) return;
+                if(beg <0) return;
+                if(end>elemen.size()-1) return;
+                
+                int pivot = partition(elemen,beg,end);
+                randomquicksort(elemen,beg,pivot-1);
+                randomquicksort(elemen,pivot+1,end);
+    }
+}
+    
