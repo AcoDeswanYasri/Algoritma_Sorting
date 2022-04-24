@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class BableSort {
+    public static void main(String[] args) {
+        ArrayList<Integer> data = new ArrayList();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Panjang Array :");
+        int  panjang = sc.nextInt();
+        
+        for(int i = 0 ;i< panjang;i++){
+            System.out.println("Nilai index ke "+i+":");
+            int nilai = sc.nextInt();
+            data.add(nilai);
+        }
+        System.out.println("Sebelum Disorting :"+data);
+        for(int i = 0; i<data.size();i++){
+            for(int j = 0 ;j<data.size()-1;j++){
+                if(data.get(j)>data.get(j+1)){
+                int pam = data.get(j);
+                data.set(j,data.get(j+1));
+                data.set(j+1, pam);
+                }
+            }
+        }
+        System.out.println("Setelah Disorting :"+data);
+    }
+}
